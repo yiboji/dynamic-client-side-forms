@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            html, 
+            body{
+                display:block;
+                width:100%;
+                height:100%;
+                background-image:url("img/galaxy-bg.jpg");
+                background-position:left top;
+                background-repeat:no-repeat;
+            }
+            #container{
+                position:absolute;
+                top:8%; 
+                width:100%;
+                height:630px;
+                padding:0;
+                margin:0;
+            }
+            #borderImg{
+                width:930px;
+                height:630px;
+                position:absolute;
+                left:20%;
+                top:0%;
+
+                background-image:url("img/ipad-bg.png");
+                background-repeat:no-repeat;
+                background-size:cover;
+            }
+            #content{
+                width:663px;
+                height:485px;
+                position:relative;
+                left:10%;
+                top:5.5%;
+                background-color:white;
+                padding:40px;
+                overflow:scroll;
+            }
+            #home-button{
+                position:absolute;
+                float:left top;
+                width:144px;
+                height:139px;
+                cursor:pointer;
+                overflow:hidden;
+            }
+            #down-arrow{
+                float:right;
+                position:relative;
+                right:10%;
+                width:144px;
+                height:139px;
+                animation:downmove 2s ease-in-out infinite;
+                visibility:visible;
+            }
+            @keyframes downmove{
+                from {bottom: 80px;}
+                to {bottom:60px;}
+            }
+        </style>
+        <script src="js/js4hw1.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="borderImg">
+                <div id="content" onscroll="isScrollToEnd()"> 
+                    <form id="form1">
+                        <fieldset>
+                        <legend>Part A: Personal Information</legend>
+                        <p><span id="firstname-p">First Name:</span><input type="text" size="10" name="firstname"/>
+                        <span id="lastname-p">Last Name:</span> <input type="text" size="10" name="lastname"/></p> 
+                        <p id="email-p"> Your Email: <input type="email" size="20" name="email" placeholder="aludra@gmail.com"/></p>
+                        <p id="birthday-p">Q1: What's your data of birth?<br>
+                        <input type="text" size="15" name="birthday" placeholder="MM/DD/YYYY"/>
+                        </p>
+                        <p id="p-nationality">Q2: What's your nationality?<font color="red">*</font><br>
+                        <select id="nationality" name="nationality" required onchange="changeOption()">
+                            <option value="" selected>Choose an option</option>
+                            <option value="Austrilia">Austrilia</option>
+                            <option value="China">China</option>
+                            <option value="India">India</option>
+                            <option value="US">US</option>
+                            <option value="UK">UK</option>
+                        </select>
+                        </p>
+                        <p id="sl1">Q3: Which city did you born?<br>
+                        <select id="city" name="city">
+                            <option value="">Choose an option</option>
+                        </select>
+                        </p>
+                        <p>Q4: What's your marital status?<br>
+                        <input type="radio" name="marital" value="single"/>I'm single<br>
+                        <input type="radio" name="marital" value="married"/>I'm married<br>
+                        <input type="radio" name="marital" value="separated"/>I'm separated<br>
+                        <input type="radio" name="marital" value="divorced"/>I'm divorced or widowed<br>
+                        </p>
+                        <p>Q5: What's your yearly salary, not including bonuses?<br>
+                        <input type="radio" name="salary" value="Less than $20,000"/>Less than $20,000<br>
+                        <input type="radio" name="salary" value="$20,000-$50,000"/>$20,000-$50,000<br>
+                        <input type="radio" name="salary" value="&50,000-$100,000"/>$50,000-$100,000<br>
+                        <input type="radio" name="salary" value="More than $100,000"/>More than $100,000<br>
+                        </p>
+                        <p><span id="work-p">Q6: In what type of industry do you work?</span><font color="red">*</font><br>
+                        <input type="checkbox" name="work" value="Healthcare"/>Healthcare<br>
+                        <input type="checkbox" name="work" value="Manufacturing"/>Manufacturing<br>
+                        <input type="checkbox" name="work" value="Banking"/>Banking/Financing<br>
+                        <input type="checkbox" name="work" value="Government"/>Government<br>
+                        </p>
+                        <p>Q7: Approximately how many employees work in your company?<br>
+                        <input type="checkbox" name="employees" value="Less than 50"/>Less than 50<br>
+                        <input type="checkbox" name="employees" value="50-200"/>50-200<br>
+                        <input type="checkbox" name="employees" value="200-500"/>200-500<br>
+                        <input type="checkbox" name="employees" value="More than 50"/>More than 500<br>
+                        </p>
+                        <p>Q8: How do you feel with your current work?<br>
+                        <textarea name="feeling" rows="10" cols="30" style="resize:none">eg: I feel good with my current work.</textarea>
+                        </p>
+                        <button type="button" onclick="nextForm()" name="toForm2">Check&Next Form</button>
+                        <input type="reset" name="resetForm1" value="Clear All"/>
+                        </fieldset>
+                    </form>
+                    <form id="form2"  style="display:none" onsubmit="nextForm();resetForm(); return false;">
+                        <fieldset>
+                        <legend>Part B: Preferences in coffee shop</legend>
+                        <p>Q1: How do you spend your leisure time? &nbsp &nbsp<br>
+                        <select name="leisure-time">
+                            <option value="" selected>Please select</option>
+                            <option value="Sport">Sport</option>
+                            <option value="Surfering Internet">Surfering Internet</option>
+                            <option value="Reading">Reading</option>
+                            <option value="Playing Game">Playing Game</option>
+                            <option value="Hang out with friends">Going out with friends</option>
+                        </select>
+                        </p>
+                        <p>Q2: What kind of beverages do you like?<br>
+                        <select name="beverages">
+                            <option value="defalut" selected>Please select</option>
+                            <option value="Hot">Hot</option>
+                            <option value="Cold">Cold</option>
+                            <option value="Sweet">Sweet</option>
+                            <option value="Alcohol">Alcohol</option>
+                            <option value="Water">Water</option>
+                        </select>
+                        </p>
+                        <p>Q3: Whick hot beverages do you prefer normally?<br>
+                        <input type="radio" name="hotBeverage" value="milk"/>Milk
+                        <input type="radio" name="hotBeverage" value="tea"/>Tea
+                        <input type="radio" name="hotBeverage" value="coffee"/>Coffee<br>
+                        <input type="radio" name="hotBeverage" value="other"/>Other(Please specify):<br>
+                        <input type="text" name="hotBeverageOther" value="eg: Hot Chocolate"/>
+                        </p>
+                        <p><span id="rate-p">Q4: Rate your self as a coffee drinker on a scale of 1 to 3?<font color="red">*</font><br>
+                        <input type="radio" name="rate" value="1"/>1
+                        <input type="radio" name="rate" value="2"/>2
+                        <input type="radio" name="rate" value="3"/>3
+                        </p>
+                        <p>Q5: Where do your prefer to have coffee?<br>
+                        <input type="checkbox" name="place" value="home"/>Home<br>
+                        <input type="checkbox" name="place" value="bar"/>Coffee bar<br>
+                        <input type="checkbox" name="place" value="cafeteria"/>College/Office cafeteria<br>
+                        Other: <input type="text" name="place"/>
+                        </p>
+                        <p>Q6: How long do you usually stay in a coffee bar?<br>
+                        <input type="checkbox" name="stayTime" value="Less than 30min"/>Less than 30min<br>
+                        <input type="checkbox" name="stayTime" value="30min-1hr"/>30min to 1hr<br>
+                        <input type="checkbox" name="stayTime" value="More than 1hr"/>More than 1hr<br>
+                        </p>
+                        <p>Q7: What is your favorite coffee shop? Where is its location?<br>
+                        <input type="text" size="20" name="coffeeShopName"/><br>
+                        Why?(Optional)<br>
+                        <textarea name="reason" rows="10" cols="30" style="resize:none">Because...</textarea>
+                        </p>
+                        <p>Q8: What do you typically order to drink?<br>
+                        <input type="text" size="20" name="typicalOrder"/>
+                        </p>
+                        <input type="submit" name="submit" value="Check&Submit"/>
+                        <input type="reset" name="resetForm2" value="Clear All"/>
+                        </fieldset>
+                    </form>
+                    <div id="report1" style="display:none">
+                        <fieldset>
+                            <legend>Summary Report</legend>
+                            <p id="report1-p"></p>
+                            <input type="button" name="addnewform" value="Fill a new form" onclick="backFirst()"/>
+                        </fieldset>
+                    </div>
+                    <div id="report2" style="display:none">
+                        <fieldset>
+                            <legend>Detail Report</legend>
+                            <p id="report2-p"></p>
+                            <input type="button" name="backReport1" value="Show Summary Report" onclick="backReport1()"/>
+                        </fieldset>
+                    </div>
+                </div>
+                <button type="button" id="down-arrow" style="background-color:transparent; border-color:transparent"><img src="img/down.ico"></button>
+            </div>
+        </div>
+        <button type="button" id="home-button" onclick="backFirst()" style="background-color:transparent; border-color:transparent"><img src="img/home.ico"></button>
+    </body>
+</html>
+
